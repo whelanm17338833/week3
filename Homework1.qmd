@@ -1,0 +1,66 @@
+---
+title: "Homework 1"
+author: "Michael Whelan"
+format: pdf
+editor: visual
+toc: true
+---
+
+\newpage
+
+## 1. Intro
+
+For this assignment I will be looking at the `women` data which is a built in dataset in R. This dataset records the average:
+
+-   Heights
+-   Weights
+
+Of women in America between the ages of 30-39. These are also the **variables** for this dataset.
+
+We will now load and inspect the data
+
+```{r, echo=FALSE}
+# Load data
+data(women)
+
+# Print data
+women
+```
+
+\
+
+We can see get the average height for this dataset using the following formula:
+
+$$
+\bar{x} = \frac{1}{n}\sum_{i=1}^n{x_{i}}
+$$ The average height is: `r mean(women$height)`
+
+## 2. Plot
+
+Now we will plot this data. We can use the packages `ggplot2` for this. After loading it we can create our plot.
+
+```{r, echo = F}
+library(ggplot2)
+```
+
+\
+
+```{r, echo = F, message=FALSE}
+# Create the scatter plot with linear regression line and add legends
+p1 <- ggplot(women, aes(x = height, y = weight)) +
+  geom_point(aes(color = "Data Points"), size = 3) +
+  geom_smooth(aes(color = "Regression Line"), method = "lm", se = FALSE) +
+  scale_color_manual(name = " ", values = c("Data Points" = "blue", "Regression Line" = "red")) +
+  labs(title = "Height vs Weight with Linear Regression", x = "Height (inches)", y = "Weight (lbs)") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+# Display the plot
+print(p1)
+
+```
+
+Looking at the plot there is a linear relationship between the `height` and `weight` of women in this dataset. It looks like as height increases weight also increases indicating a strong positive linear relationship.
+
+I have also constructed a regression line for this plot. It is clear the regression line predicts the data very well.
+
+------------------------------------------------------------------------
