@@ -17,14 +17,14 @@ For this assignment I will be looking at the `women` data which is a built in da
 
 Of women in America between the ages of 30-39. These are also the **variables** for this dataset.
 
-We will now load and inspect the data
+We will now load and inspect the first 6 lines of the data  data
 
 ```{r, echo=FALSE}
 # Load data
 data(women)
 
 # Print data
-women
+head(women)
 ```
 
 \
@@ -33,7 +33,13 @@ We can see get the average height for this dataset using the following formula:
 
 $$
 \bar{x} = \frac{1}{n}\sum_{i=1}^n{x_{i}}
-$$ The average height is: `r mean(women$height)`
+$$ 
+
+The average height is: `r mean(women$height)`
+
+We will also find the average weight for this dataset using the same formula above
+
+The average weight is: `r mean(women$weight)`
 
 ## 2. Plot
 
